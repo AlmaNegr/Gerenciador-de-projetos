@@ -1,18 +1,23 @@
-import './App.css'
-import Pessoa from './components/Pessoa'
-import Saudacao from './components/Saudacao'
-import List from './components/List'
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-dom'
+import Container from './components/layout/Container'
+import Home from './components/pages/Home'
 
 function App() {
-
     return(
-        <div>
-            <h2>Olá, React</h2>
-            <Pessoa nome="Alisson" idade={33} profissao="Desenvolvedor"/>
-            <Saudacao nome="Davi" idade={40} profissao="Dev-Senior"/>
-            <List />
-        </div>
+       <Router>
+        <nav>
+            <ul>
+                <li><Link to="/">Ínicio</Link></li>
+                
+            </ul>
+        </nav>
+        
+        <Container>
+            <Routes>
+                <Route path="/" element={<Home />}></Route>
+            </Routes>
+        </Container>
+       </Router>
     )
 }
 
