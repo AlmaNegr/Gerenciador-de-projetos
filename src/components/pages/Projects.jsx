@@ -1,0 +1,7 @@
+function Projects() {
+    return(
+        <h1>Todos os Projetos</h1>
+    )
+}
+
+export default Projects

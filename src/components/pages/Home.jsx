@@ -1,7 +1,7 @@
 
 function Home() {
     return(
-        <h1>Início</h1>
+        <h1>Bem-vindo ao gerenciador de Projetos</h1>
     )
 }
 

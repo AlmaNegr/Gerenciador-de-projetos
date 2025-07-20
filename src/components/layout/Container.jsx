@@ -1,5 +1,4 @@
-import { Children } from 'react'    
-import styles from './Container.module.css'
+  import styles from './Container.module.css'
 
 function Container({ children }) {
 
@@ -7,3 +6,5 @@ function Container({ children }) {
         <div className={styles.container}>{children}</div>
     )
 }
+
+export default Container
