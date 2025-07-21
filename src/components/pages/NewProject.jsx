@@ -1,30 +1,30 @@
-import { useState } from "react"
+import { useNavigate } from 'react-router-dom'
+import ProjectForm from '../project/ProjectForm'
 
 function NewProject() {
-    const [project, setProject] = useState({name: '',
-        budget: '',
-        category: '',
-        description: ''
-    })
+    const navigate = useNavigate()
 
-    function handleChange(e) {
-        setProject({ ...project, [e.target.name]: e.target.value})
+    function createPost(project) {
+        // Pega os projetos que já estão no localStorage ou cria uma lista vazia
+        const storedProjects = JSON.parse(localStorage.getItem('projects')) || []
+
+        // Dá um id único ao projeto
+        project.id = Date.now()
+
+        // Adiciona o projeto novo na lista
+        storedProjects.push(project)
+
+        // Salva a lista atualizada no localStorage
+        localStorage.setItem('projects', JSON.stringify(storedProjects))
+
+        // Redireciona para a página de listagem
+        navigate('/projects')
     }
 
-    function handleSubmit(e) {
-        e.preventDefault()
-        console.log('Projeto enviado', project)
-    }
-    return(
+    return (
         <div>
             <h1>Criar Novo Projeto</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Nome do Projeto:</label>
-                    <input type="text" name="name" onChange={handleChange} />
-                </div>
-                
-            </form>
+            <ProjectForm handleSubmit={createPost} btnText="Criar Projeto" />
         </div>
     )
 }
