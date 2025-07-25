@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import ProjectCard from "../project/ProjectCard"
+import styles from "./Projects.module.css"
 
 function Projects() {
     const [projects, setProjects] = useState([])
@@ -11,19 +12,21 @@ function Projects() {
     }, [])
 
     function handleDelete(id) {
-        const updateProjects
+        const updateProjects = projects.filter((project) => project.id !== id)
+        setProjects(updateProjects)
+        localStorage.setItem('projects', JSON.stringify(updateProjects))
     }
 
     return (
-        <div>
+        <div className={styles.projectContainer}>
             <h1>Projetos Criados</h1>
             {projects.length === 0 ? (
                 <p>Nenhum projeto criado ainda.</p>
             ) : (
-                <ul>
+                <ul className={styles.projectList}>
                     {projects.map((project) => (
                         <li key={project.id}>
-                            <ProjectCard project={project} />
+                            <ProjectCard project={project} handleDelete={handleDelete}/>
                         </li>
                     ))}
                 </ul>

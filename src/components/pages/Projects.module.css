@@ -1,0 +1,11 @@
+.projectContainer {
+    padding: 20px;
+}
+
+.projectList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
