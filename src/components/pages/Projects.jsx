@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import ProjectCard from "../project/ProjectCard"
 
 function Projects() {
     const [projects, setProjects] = useState([])
@@ -9,6 +10,10 @@ function Projects() {
         setProjects(storedProjects)
     }, [])
 
+    function handleDelete(id) {
+        const updateProjects
+    }
+
     return (
         <div>
             <h1>Projetos Criados</h1>
@@ -18,13 +23,11 @@ function Projects() {
                 <ul>
                     {projects.map((project) => (
                         <li key={project.id}>
-                            <h3>{project.name}</h3>
-                            <p>Orçamento: R$ {project.budget}</p>
-                            <p>Categoria: {project.category}</p>
-                            <p>Descrição: {project.description}</p>
+                            <ProjectCard project={project} />
                         </li>
                     ))}
                 </ul>
+
             )}
         </div>
     )
